@@ -1,15 +1,21 @@
-
 <div class="add-arctile-form">
     <% if(messages.info){ %>
         <%= messages.info %>
       <% } %>
     <h1>Create article</h1>
-    <form action="/articles/add-new" method="POST">
-        <input type="text" name="name" placeholder="name" required>
-        <input type="text" name="content" placeholder="content" >
-        <input type="text" name="firstname" placeholder="firstname" >
-        <input type="text" name="secondname" placeholder="secondname" >
-        <input type="email" name="email" placeholder="email" >
-        <input type="submit" name="Send">
-    </form>
+    <div class="form-container">
+        <form action="/articles/add-new" method="POST">
+            <label>Article Title</label>
+            <input type="text" name="name" placeholder="Article Title.." required>
+            <label>Article Content</label>
+            <textarea class="article-content" type="text" name="content" placeholder="Input some text.." ></textarea>
+            <label>Author first name</label>
+            <input type="text" name="firstname" placeholder="Your name.." >
+            <label>Author last name</label>
+            <input type="text" name="secondname" placeholder="Your last name.." >
+            <label>Author e-mail</label>
+            <input type="email" name="email" placeholder="Your e-mail.." >
+            <input class="submit-button" type="submit" name="Submit">
+        </form>
+    </div>
 </div>
