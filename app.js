@@ -6,13 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+const expressLayouts = require('express-ejs-layouts')
 var app = express();
 
-var db = require('./db');
-
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Set Templating Engine
+app.use(expressLayouts)
+// app.set('views', path.join(__dirname, 'views'));
+app.set('layout', './layout/full-witdh')
+
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
@@ -23,6 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.get('/login', (req, res) => {
+  res.render('login', { title: 'Login Page', layout: './layout/sidebar' })
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
