@@ -1,11 +1,16 @@
 var createError = require('http-errors');
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var flash = require('express-flash');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var articlesRouter = require('./routes/articles');
+
 const expressLayouts = require('express-ejs-layouts')
 var app = express();
 
@@ -22,13 +27,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    secure: true,
+    maxAge: 60000
+  }
+}))
+app.use(flash());
 app.use('/', indexRouter);
+app.use('/articles', articlesRouter);
+
 app.use('/users', usersRouter);
 
-app.get('/login', (req, res) => {
-  res.render('login', { title: 'Login Page', layout: './layout/sidebar' })
-})
+// app.get('/login', (req, res) => {
+//   res.render('login', { title: 'Login Page', layout: './layout/sidebar' })
+// })
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
