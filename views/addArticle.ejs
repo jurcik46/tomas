@@ -4,12 +4,12 @@
         <%= messages.info %>
       <% } %>
     <h1>Create article</h1>
-    <form action="/articles/add-new" method="POST">
+    <form action="/articles/add" method="POST">
         <input type="text" name="name" placeholder="name" required>
         <input type="text" name="content" placeholder="content" >
         <input type="text" name="firstname" placeholder="firstname" >
         <input type="text" name="secondname" placeholder="secondname" >
-        <input type="email" name="email" placeholder="email" >
-        <input type="submit" name="Send">
+        <input type="text" name="email" placeholder="email" >
+        <input type="submit">
     </form>
 </div>

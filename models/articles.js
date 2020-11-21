@@ -4,31 +4,40 @@ var db = require('../db');
 async function createArticle(name,content,authorFirstName, authorSecondName, authorEmail){
     try
     {
-        //TODO find if author exist
-        var resultsAuthor =  await db.execute(`INSERT INTO author (first_name, second_name, email)
-                    VALUES  (?, ?, ?)`,[authorFirstName, authorSecondName, authorEmail],
-                    function (error, results, fields) {
-                        if(error)
-                            console.log(error);
-                        return results;
-                      })
-        if(!resultsAuthor)
-            return false;
+        const authorId = await getOrCreateAuthor(authorFirstName, authorSecondName, authorEmail);
+        if(authorId)
+            var resultsArticle =  await db.run(`INSERT INTO articles (author_id, name, content)
+                    VALUES  (?, ?, ?)`,[authorId, name, content])
 
-        var resultsArticle =  await db.execute(`
-        INSERT INTO articles (author_id, name, content) values (1, 'name', 'obsah');
-            VALUES  (?, ?, ?)`,[resultsAuthor.insertId, name, content],
-            function (error, results, fields) {
-                if(error)
-                    console.log(error);
-                return results;
-              })
         if(!resultsArticle)
              return false;
         return true;
-    }catch{
+    }
+    catch(error){
+        console.log(error); 
         return false;
     }
 }
 
-module.exports = {createArticle};
+async function getOrCreateAuthor(authorFirstName, authorSecondName, authorEmail){
+        var authorId = await getAuthor(authorEmail);
+        if(authorId.length == 0){
+            var resultsAuthor =  await db.run(`INSERT INTO author (first_name, second_name, email)
+            VALUES  (?, ?, ?)`,[authorFirstName, authorSecondName, authorEmail])
+            authorId = await getAuthor(authorEmail)
+        }
+        return authorId[0].id;
+}
+
+ async function getAuthor(authorEmail){
+    var ress =  await db.run('SELECT * FROM `author` WHERE `email` = ?',[authorEmail]);
+    return ress[0];
+}
+
+
+async function getAllArticle(){
+   var result = await db.run('SELECT * FROM articles JOIN author ON articles.author_id = author.id')
+   return result[0];
+}
+
+module.exports = {createArticle, getAuthor, getAllArticle};

@@ -1,13 +1,10 @@
-var mysql = require('mysql2')
+var db = require('promise-mysql2');
 var dbConfig = require("./config.js");
-var connection = mysql.createConnection(dbConfig.db);
 
-async function execute(query, params, result){
-    connection.connect();
-   var result = await connection.query(query ,params, result);
-    connection.end();
-    return result;
+ async function run(query, params){
+    var con = await db.createConnection(dbConfig.db);
+    return await con.query(query, params);
 }
 
 
-module.exports = {execute}
+module.exports = {run}
