@@ -7,16 +7,12 @@ const { body, validationResult } = require('express-validator');
 
 
 router.get('/', async function(req, res, next) {
-  var resu = {title:'Add article', articles: await articlesModel.getAllArticle()};
-  console.log(resu);
   res.render('articles', {title:'Add article', articles: await articlesModel.getAllArticle()});
 });
 
 
 /* GET add article page. */
 router.get('/add', function(req, res, next) {
-    // req.flash('info', 'Welcome');
-    var reeee= articlesModel.getAllArticle();
     res.render('addArticle', {title:'Add article'});
 });
 
@@ -37,7 +33,6 @@ router.post('/add', [
       req.flash('info', 'Uspesne sa pridal novy clanok');
     else
       req.flash('info', 'Clanok sa nepodarilo pridat');
-
     return res.render('addArticle', {title:'Add article'});
 })
 
