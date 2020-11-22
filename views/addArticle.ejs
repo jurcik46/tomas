@@ -1,21 +1,25 @@
-<div class="add-arctile-form">
+<div class="add-article-form">
     <% if(messages.info){ %>
         <%= messages.info %>
       <% } %>
-    <h1>Create article</h1>
-    <div class="form-container">
-        <form action="/articles/add" method="POST">
-            <label>Article Title</label>
-            <input type="text" name="name" placeholder="Article Title.." required>
-            <label>Article Content</label>
-            <textarea class="article-content" type="text" name="content" placeholder="Input some text.." ></textarea>
-            <label>Author first name</label>
-            <input type="text" name="firstname" placeholder="Your name.." >
-            <label>Author last name</label>
-            <input type="text" name="secondname" placeholder="Your last name.." >
-            <label>Author e-mail</label>
-            <input type="email" name="email" placeholder="Your e-mail.." >
-            <input class="submit-button" type="submit" name="Submit">
-        </form>
+    <h1 class="page-title">Create article</h1>
+    <div class="regSection">
+        <div class="form-box">
+            <div class="form-container">
+                <form action="/articles/add" method="POST">
+                    <label>Article Title</label>
+                    <input type="text" name="name" placeholder="Article Title.." required>
+                    <label>Article Content</label>
+                    <textarea class="article-content" type="text" name="content" placeholder="Input some text.." ></textarea>
+                    <label>Author first name</label>
+                    <input type="text" name="firstname" placeholder="Your name.." >
+                    <label>Author last name</label>
+                    <input type="text" name="secondname" placeholder="Your last name.." >
+                    <label>Author e-mail</label>
+                    <input type="email" name="email" placeholder="Your e-mail.." >
+                    <input class="submit-button" type="submit" name="Submit">
+                </form>
+            </div>
+        </div>
     </div>
 </div>

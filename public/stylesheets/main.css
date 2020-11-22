@@ -1,13 +1,33 @@
-body {
-    background-color: #fff;
-    font-size: 26px;
+/*
+*   Basic page template
+*/
+
+@import url(
+    'https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap'
+);
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-fluid ul li a {
+    font-weight: bold;
+}
+
+.navbar-brand {
+    color: whitesmoke !important;
+}
+
+html, body {
+    height: 100%;
 }
 
 .wrapper {
-    width: 700px;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 10px;
+    /*background-color: gray;*/
+    background: linear-gradient(to right, black, white);
 }
 
 header, footer {
@@ -15,21 +35,108 @@ header, footer {
     padding: 20px;
 }
 
-main {
-    background-color: cornsilk;
-    padding: 20px;
-}
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: whitesmoke;
+    text-align: center;
+ }
 
+ .page-title {
+     text-align: center;
+     font-weight: bold;
+     font-family: Arial;
+     padding: 20px;
+     background: transparent;
+     color: whitesmoke;
+ }
+ 
 .layout-sidebar {
     display: grid;
     gap: 10px;
     grid-template-columns: 2fr 1fr;
 }
 
+/*
+ *  CSS for the "add new article" formular
+ */
+
+ .regSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, black, white);
+    padding-bottom: 30px;
+ }
+
+.form-box {
+    position: relative;
+    padding: 40px;
+    height: auto;
+    width: 880px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.2);
+}
+
+.form-box::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 5px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0.1) 15%, transparent 50%, transparent 85%, 
+    rgba(255, 255, 255, 0.1) 100%);
+}
+
+.form-box .form-container {
+    position: relative;
+    width: 100%;
+}
+
 .form-container {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background: inherit;
+    overflow: hidden;
     padding: 20px;
+    height: 100%;
+    width: 60%;
+}
+
+label {
+    font-size: 18px;
+    padding-top: 20px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .submit-button {
@@ -47,16 +154,6 @@ main {
     background-color: #45a049;
 }
 
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
 .article-content {
     width: 100%;
     height: 300px;
@@ -68,3 +165,7 @@ input[type=text], select {
     font-size: 16px;
     resize: none;
 }
+
+/*
+*   
+*/
