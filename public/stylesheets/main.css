@@ -1,12 +1,13 @@
 /*
 *   Basic page template
 */
-
 @import url(
     'https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap'
 );
 
 * {
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -26,7 +27,6 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    /*background-color: gray;*/
     background: linear-gradient(to right, black, white);
 }
 
@@ -63,7 +63,6 @@ header, footer {
 /*
  *  CSS for the "add new article" formular
  */
-
  .regSection {
     display: flex;
     justify-content: center;
@@ -167,14 +166,88 @@ input[type=email] {
 }
 
 /*
-*   CSS for the "update/change article" formular
+*   CSS for the "home page/articles" formular
 */
+.page-container {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
+.article-container {
+    width: 90%;
+    margin: 50px auto;
+    min-height: 76vh;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+}
+
+.card {
+    width: 20%;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 50px;
+    transition: 0.3s;
+}
+
+.card-header {
+    text-align: center;
+    padding: 50px 10px;
+    background: linear-gradient(to right, #426e86, #f9ba32);
+    color: #fff;
+}
+
+.card-body {
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.card-body .btn {
+    display: block;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(to right, #426e86, #f9ba32);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    padding: 10px 5px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        width: 40%;
+    }
+}
+
+.btn-update {
+    display: block;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(to right, #f9ba32, #426e86);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    padding: 10px 5px;
+}
+
+.btn-delete {
+    color: red;
+}
 
 /*
 *   CSS for the statement
 */
-
 .statement{
     font-size: 25px;
     color: orange;

@@ -1,13 +1,14 @@
-<div >
-    ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    <div>Name:  <%- name %></div>
-    <div>id:  <%- id %></div>
-    <div>author:  <%- author_id %></div>
-
-    <div><a href="/articles/<%- id %>">Link</a></div>
-    <div>Author:   <%- first_name %> <%- second_name %> </div>
-    <div>Email: <%- email %></div>
-    <div>Content: <%- content %></div>
-    <div><a href="/articles/update/<%- id %>" ><button> Update</button></a>
-   <a href="/articles/delete/<%- id %>">Delete </a></div>
+<div class="card">
+    <div class="card-header">
+        <h1><%- name %></h1>
+        <h3><%- first_name %> <%- second_name %></h3>
+        <h4><%- email %></h4>
+    </div>
+    <div class="card-body">
+        <p>What is Lorem Ipsum?
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...</p>
+        <a class ="btn" href="/articles/<%- id %>">Read more</a>
+        <a class="btn-update" href="/articles/update/<%- id %>" >Update</a>
+        <a class="btn-delete" href="/articles/delete/<%- id %>">Delete</a>
+    </div>
 </div>

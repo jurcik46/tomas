@@ -1,9 +1,15 @@
-
-<% if(messages.info){ %>
-    <%= messages.info %>
-  <% } %>
-<% articles.forEach(function(article){ %>
-  <%- include('./partials/article',  article); %>
-  <% }); %>
-
-
+<div class="page-container">
+  <div class="statement">
+    <% if(messages.info){ %>
+      <%= messages.info %>
+    <% } %>
+  </div>
+  <h1 class="page-title">Articles</h1>
+  <div class="article-container">
+    <div class="row">
+    <% articles.forEach(function(article){ %>
+      <%- include('./partials/article',  article); %>
+      <% }); %>
+      </div>
+    </div>
+</div>
