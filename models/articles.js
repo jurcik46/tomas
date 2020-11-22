@@ -19,6 +19,24 @@ async function createArticle(name,content,authorFirstName, authorSecondName, aut
     }
 }
 
+async function updateArticle(name,content,authorFirstName, authorSecondName, authorEmail,authorId, articleId ){
+    try
+    {
+        const resAuthor = await db.run(`UPDATE author
+        SET first_name = ?, second_name = ?, email = ?
+        WHERE id = ?`,[authorFirstName, authorSecondName, authorEmail,authorId]) 
+        const resultsArticle =  await db.run(`UPDATE articles
+            SET name = ?, content = ?
+                     WHERE id = ?`,[name, content,articleId])
+        return true;
+    }
+    catch(error){
+        console.log(error); 
+        return false;
+    }
+}
+
+
 async function getOrCreateAuthor(authorFirstName, authorSecondName, authorEmail){
         var authorId = await getAuthor(authorEmail);
         if(authorId.length == 0){
@@ -36,8 +54,20 @@ async function getOrCreateAuthor(authorFirstName, authorSecondName, authorEmail)
 
 
 async function getAllArticle(){
-   var result = await db.run('SELECT * FROM articles JOIN author ON articles.author_id = author.id')
+   var result = await db.run('SELECT ar.*, a.first_name, a.second_name, a.email FROM articles as ar '+
+                              'JOIN author a ON ar.author_id = a.id')
    return result[0];
 }
 
-module.exports = {createArticle, getAuthor, getAllArticle};
+async function getArticle(articleId){
+    var ress =  await db.run('SELECT ar.*, a.first_name, a.second_name, a.email FROM articles AS ar '+
+    'JOIN author a ON ar.author_id = a.id WHERE ar.id = ?',[articleId]);
+    return ress[0][0];
+}
+
+async function deleteArticle(articleId){
+    var ress =  await db.run('DELETE FROM articles WHERE articles.id = ?',[articleId]);
+    return ress[0];
+}
+
+module.exports = {createArticle, getAuthor, getAllArticle, getArticle, deleteArticle, updateArticle};

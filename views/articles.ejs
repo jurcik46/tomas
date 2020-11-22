@@ -1,6 +1,9 @@
 
+<% if(messages.info){ %>
+    <%= messages.info %>
+  <% } %>
 <% articles.forEach(function(article){ %>
-  <%- include('./article',  article); %>
+  <%- include('./partials/article',  article); %>
   <% }); %>
 
 
