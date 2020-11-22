@@ -1,25 +1,28 @@
-<div class="add-arctile-form">
+<div class="add-article-form">
     <% if(messages.info){ %>
         <%= messages.info %>
       <% } %>
     <h1 class="page-title">Update article</h1>
-    <div class="form-container">
-        <form action="/articles/update/<%- article.id %>" method="POST">
-            <input type="hidden" name="articleid" value="<%- article.id %>" required>
-            <input type="hidden" name="authorid"  value="<%- article.author_id %>" required>
-            <label>Article Title</label>
-            <input type="text" name="name" placeholder="Article Title.." value="<%- article.name %>" required>
-            <label>Article Content</label>
-            <textarea class="article-content" type="text" name="content" 
-                 placeholder="Input some text.."><%- article.content %></textarea>
-            <label>Author first name</label>
-            <input type="text" name="firstname" placeholder="Your name.." value="<%- article.first_name %>" >
-            <label>Author last name</label>
-            <input type="text" name="secondname" placeholder="Your last name.." value="<%- article.second_name %>" >
-            <label>Author e-mail</label>
-            <input type="email" name="email" placeholder="Your e-mail.." value="<%- article.email %>">
-            <input class="submit-button" type="submit" name="Submit">
-        </form>
+    <div class="regSection">
+        <div class="form-box">
+            <div class="form-container">
+                <form action="/articles/update/<%- article.id %>" method="POST">
+                    <input type="hidden" name="articleid" value="<%- article.id %>" required>
+                    <input type="hidden" name="authorid"  value="<%- article.author_id %>" required>
+                    <label>Article Title</label>
+                    <input type="text" name="name" placeholder="Article Title.." value="<%- article.name %>" required>
+                    <label>Article Content</label>
+                    <textarea class="article-content" type="text" name="content" 
+                         placeholder="Input some text.."><%- article.content %></textarea>
+                    <label>Author first name</label>
+                    <input type="text" name="firstname" placeholder="Your name.." value="<%- article.first_name %>" >
+                    <label>Author last name</label>
+                    <input type="text" name="secondname" placeholder="Your last name.." value="<%- article.second_name %>" >
+                    <label>Author e-mail</label>
+                    <input type="email" name="email" placeholder="Your e-mail.." value="<%- article.email %>">
+                    <input class="submit-button" type="submit" name="Submit">
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-
