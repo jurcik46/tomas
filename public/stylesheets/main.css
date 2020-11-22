@@ -171,3 +171,11 @@ input[type=email] {
 */
 
 
+/*
+*   CSS for the statement
+*/
+
+.statement{
+    font-size: 25px;
+    color: orange;
+}

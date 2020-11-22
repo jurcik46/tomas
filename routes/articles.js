@@ -5,7 +5,6 @@ var articlesModel = require("../models/articles")
 
 const { body, validationResult } = require('express-validator');
 
-
 router.get('/', async function(req, res, next) {
   res.render('articles', {title:'Aarticles', articles: await articlesModel.getAllArticle()});
 });
@@ -20,10 +19,9 @@ router.get('/:articleId', async function(req, res, next) {
   res.render('article', {title:'Article', article: await articlesModel.getArticle(articleId)});
 });
 
-
 router.get('/delete/:articleId', async function(req, res, next) {
   const {articleId} = req.params;
-  req.flash('info', 'Clanok bol uspesne vymazany');
+  req.flash('info', 'Článok bol úspešne vymazaný!');
   await articlesModel.deleteArticle(articleId);
   res.redirect('/articles');
 });
@@ -44,15 +42,11 @@ router.post('/update/:articleId', [
   var {name,content, firstname, secondname, email, authorid, articleid } =  req.body
   var result =  await articlesModel.updateArticle(name, content,firstname,secondname, email,authorid, articleid )
   if(result)
-    req.flash('info', 'Clanok bol aktualizovany');
+    req.flash('info', 'Článok bol aktualizovaný!');
   else
-    req.flash('info', 'Clanok sa nepodarilo aktualizovat');
+    req.flash('info', 'Článok sa nepodarilo aktualizovať!');
   return res.render('updateArticle', {title:'Add article', article: await articlesModel.getArticle(articleId)});
 });
-
-
-
-
 
 router.post('/add', [
     body('email').isEmail().normalizeEmail(),
@@ -63,17 +57,15 @@ router.post('/add', [
   ], async function(req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        req.flash('info', 'Formualr nieje spravne vyplenni');
+        req.flash('info', 'Formulár nie je správne vyplnený!');
         return res.render('addArticle', {title:'Add article'});
     }
     var {name,content, firstname, secondname, email } =  req.body
-
-    
     var result =  await articlesModel.createArticle(name, content,firstname,secondname, email)
     if(result)
-      req.flash('info', 'Uspesne sa pridal novy clanok');
+      req.flash('info', 'Úspešne sa podarilo pridať nový článok!');
     else
-      req.flash('info', 'Clanok sa nepodarilo pridat');
+      req.flash('info', 'Článok sa nepodarilo pridať!');
     return res.render('addArticle', {title:'Add article'});
 })
 
