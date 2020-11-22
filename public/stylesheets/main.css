@@ -20,13 +20,9 @@
 }
 
 html, body {
-    height: 100%;
-}
-
-.wrapper {
     width: 100%;
     height: 100%;
-    margin: 0 auto;
+    margin: 0;
     background: linear-gradient(to right, black, white);
 }
 
@@ -116,6 +112,7 @@ header, footer {
 label {
     font-size: 18px;
     padding-top: 20px;
+    color: black;
 }
 
 input[type=text], select {
@@ -166,7 +163,7 @@ input[type=email] {
 }
 
 /*
-*   CSS for the "home page/articles" formular
+*   CSS for the "home page/articles" (preview of the articles in the cards)
 */
 .page-container {
     padding: 0;
@@ -244,6 +241,36 @@ input[type=email] {
 .btn-delete {
     color: red;
 }
+
+/*
+*   CSS for the "article" page (Read more -> full article)
+*/
+.article-wrapper {
+    width: 80%;
+    margin: 50px auto;
+    min-height: 81vh;
+    background: whitesmoke;
+    border-radius: 6px;
+    opacity: 0.8;
+}
+
+.article-info {
+    width: 100%;
+    color: black;
+    padding: 20px;
+}
+
+.article-header {
+    padding-left: 20px;
+    text-align: center;
+}
+
+.article-body {
+    padding: 20px;
+    text-align: justify;
+    font-size: 18px;
+}
+
 
 /*
 *   CSS for the statement

@@ -1,4 +1,4 @@
-
+<!--
 <div >
     ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     <div>Name:  <%- article.name %></div>
@@ -7,5 +7,17 @@
     <div>Email: <%- article.email %></div>
     <div>Content: <%- article.content %></div>
 </div>
+-->
 
-
+<div class="article-wrapper">
+    <div class="article-info">
+        <h3>Author:   <%- article.first_name %> <%- article.second_name %></h3>
+        <h4>E-mail:   <%- article.email %></h4>
+    </div>
+    <div class="article-header">
+        <h1><%- article.name %></h1>
+    </div>
+    <div class="article-body">
+        <%- article.content %>
+    </div>
+</div>
